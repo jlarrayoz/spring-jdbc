@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Pizzeria Spring</title>
+<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+	<h1>Arme su pizza!</h1>
+	<img th:src="@{/images/pizza.jpeg}" />
+	<!--  Por defecto hace el submit del form a la URL actual  /design-->
+	<form method="POST" th:object="${pizza}">
+	
+	<!-- Validación de la lista de ingredientes -->
+	<span class="validationError" th:if="${#fields.hasErrors('ingredientes')}" th:errors="*{ingredientes}">Error ingredientes</span>
+		
+		<div class="grid">
+			
+			<div class="ingredient-group" id="masas">
+				<h3>Elija su masa:</h3>
+				<div th:each="ingredient : ${masa}">
+					<input th:field="*{ingredientes}" type="checkbox" th:value="${ingredient.id}"/>
+					<span th:text="${ingredient.nombre}">INGREDIENTE</span>
+					<br/>	
+				</div>
+			</div>
+			
+			<div class="ingredient-group" id="quesos">
+				<h3>Elija el queso:</h3>
+				<div th:each="ingredient : ${queso}">
+					<input th:field="*{ingredientes}" type="checkbox" th:value="${ingredient.id}" />
+					<span th:text="${ingredient.nombre}">INGREDIENTE</span><br />
+				</div>
+			</div>
+		</div>
+		
+		<div>
+			<h3>Nombre de su creación:</h3>
+			<input type="text" th:field="*{nombre}"/>
+			<!--  Validación del campo nombre -->
+			<span class="validationError" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error campo nombre</span>
+			<br/><br/><br/>
+			<button id="button">Enviar su orden</button>
+		</div>
+	</form>
+</body>
+</html>

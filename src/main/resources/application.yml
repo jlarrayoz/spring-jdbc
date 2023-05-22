@@ -1,0 +1,7 @@
+#Configuracion para que H2 utilize este nombre de base de datos
+spring:
+  datasource:
+    generate-unique-name: false
+    name: pizzadb
+  h2:
+    console.enabled: true

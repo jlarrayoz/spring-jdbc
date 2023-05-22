@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Pizzeria Spring</title>
+<link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+<body>
+	<!--  Por defecto hace el submit del form a la URL actual. Como la actual es /ordenes/actual, incluimos el action para cambiar ese comportamiento y que lo haga a /ordenes-->
+	<form method="POST" th:action="@{/ordenes}" th:object="${ordenPizza}" name="register">
+		<h1>Ordene sus creaciones !!!</h1>
+		<img th:src="@{/images/pizza.jpeg}" />
+		
+		<h3>Las pizzas de su orden:</h3>
+		<a th:href="@{/design}" id="another">Diseñe otra pizza</a><br />
+		
+		<ul>
+			<li th:each="pizza : ${ordenPizza.pizzas}"><span
+				th:text="${pizza.nombre}">nombre de la pizza</span></li>
+		</ul>
+
+		<h3>Entregar las pizzas a ....</h3>
+		
+		<fieldset>
+
+		<p>
+		<label for="nombrePersona">Nombre</label>
+		<input type="text" th:field="*{nombrePersona}" />
+		<span class="validationError" th:if="${#fields.hasErrors('nombrePersona')}" th:errors="*{nombrePersona}">Error campo nombre persona</span>
+		</p> 
+		
+		<p>
+		<label for="direccion">Dirección</label>
+		<input type="text" th:field="*{direccion}" />
+		<span class="validationError" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}">Error campo direccion</span>
+		</p>
+		
+		<p>
+		<label for="ciudad">Ciudad</label>
+		<input type="text" th:field="*{ciudad}" />
+		<span class="validationError" th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}">Error campo ciudad</span>
+		<p/> 
+		
+		<p>
+		<label for="barrio">Barrio</label>
+		<input type="text" th:field="*{barrio}" />
+		<span class="validationError" th:if="${#fields.hasErrors('barrio')}" th:errors="*{barrio}">Error campo barrio</span>
+		<p/>
+		
+		<h3>Info de su pago...</h3>
+		
+		<p>
+		<label for="nroTarjeta">N° de tarjeta</label>
+		<input type="text" th:field="*{nroTarjeta}" />
+		<span class="validationError" th:if="${#fields.hasErrors('nroTarjeta')}" th:errors="*{nroTarjeta}">Error campo nro tarjeta</span>
+		<p/>
+		
+		<p>
+		<label for="fecVencimiento">Vencimiento</label>
+		<input type="text" th:field="*{fecVencimiento}" />
+		<span class="validationError" th:if="${#fields.hasErrors('fecVencimiento')}" th:errors="*{fecVencimiento}">Error campo fecha vto</span>
+		<p/>
+		
+		<p>
+		<label for="codigoCVV">CVV</label>
+		<input type="text" th:field="*{codigoCVV}" />
+		<span class="validationError" th:if="${#fields.hasErrors('codigoCVV')}" th:errors="*{codigoCVV}">Error campo codigoCVV</span>
+		<p/> 
+		
+		<input type="submit" value="Confirmar orden" />
+		
+		</fieldset>
+		
+	</form>
+</body>
+</html>
