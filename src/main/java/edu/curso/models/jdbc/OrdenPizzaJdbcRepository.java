@@ -14,7 +14,7 @@ import org.springframework.asm.Type;
 import org.springframework.jdbc.core.PreparedStatementCreatorFactory;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 
-import edu.curso.domain.Ingrediente;
+import edu.curso.domain.IngredientePizza;
 import edu.curso.domain.OrdenPizza;
 import edu.curso.domain.Pizza;
 import edu.curso.models.OrdenPizzaRepository;
@@ -95,9 +95,9 @@ public class OrdenPizzaJdbcRepository implements OrdenPizzaRepository {
 		
 	}
 	
-	private void saveIngredientes(Long pizzaId, List<Ingrediente> ingredientes) {
+	private void saveIngredientes(Long pizzaId, List<IngredientePizza> ingredientes) {
 		ingredientes.forEach(i -> {
-			jdbcOperations.update("insert into Ingrediente_Pizza (fk_ingrediente_id, fk_pizza_id) values (?, ?)", i.getId(), pizzaId);
+			jdbcOperations.update("insert into IngredientePizza (fk_ingrediente_id, fk_pizza_id) values (?, ?)", i.getIngrediente(), pizzaId);
 		});
 		
 	}

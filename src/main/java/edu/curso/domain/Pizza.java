@@ -17,5 +17,5 @@ public class Pizza {
 	
 	@NotNull
 	@Size(min=2, message="La pizza debe tener al menos 2 ingredientes")
-	private List<Ingrediente> ingredientes;
+	private List<IngredientePizza> ingredientes;
 }

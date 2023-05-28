@@ -1,4 +1,4 @@
-delete from Ingrediente_Pizza;
+delete from IngredientePizza;
 delete from Pizza;
 delete from OrdenPizza;
 delete from Ingrediente;

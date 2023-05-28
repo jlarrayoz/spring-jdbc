@@ -24,7 +24,7 @@ create table if not exists Ingrediente (
 
 
 
-create table if not exists Ingrediente_Pizza (
+create table if not exists IngredientePizza (
   fk_ingrediente_id varchar(4) not null,
   fk_pizza_id bigint not null
 );
@@ -32,4 +32,4 @@ create table if not exists Ingrediente_Pizza (
 
 ALTER TABLE Ingrediente ADD PRIMARY KEY (id);
 alter table Pizza add foreign key (fk_ordenPizza_id) references OrdenPizza(id);
-alter table Ingrediente_Pizza add foreign key (fk_ingrediente_id) references Ingrediente(id);
+alter table IngredientePizza add foreign key (fk_ingrediente_id) references Ingrediente(id);
